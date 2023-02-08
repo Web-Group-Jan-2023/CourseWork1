@@ -27,3 +27,13 @@
             </header>
 
                 <div id="item">
+                    <p>Subject:{{product.Subject}}</p>
+                    <p>Location:{{product.Location}}</p>
+                    <p>Price:{{product.price}}</p>
+                    <p>Number_of_Places:{{product.Number_of_Places }} </p>
+                    <button v-bind:disabled="product.Number_of_Places== 0" v-on:click="product.Number_of_Places -= 1 ">Add To Cart</button>
+                    <p v-if="product.Number_of_Places == 0">
+                    <p btnDisable:true></p> 
+                    </p>
+                </div>
+        </div>
