@@ -5,6 +5,7 @@
         <title>todo(VUE.js version)</title>
         <!--Load the Vue.js as a JavaScript library-->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- Implicit Css styling to style the site -->
         <style>
             *{
                 
@@ -21,17 +22,22 @@
         
 </head>
 <body>
+    <!-- Mounting point of the vue instance -->
         <div id="app">
             <header>
+                <!-- Implicitly display data from the data store of the vue js instance  -->
                 <h1 v-text="sitename"></h1>
             </header>
 
+                <!-- Using mustache to explicitly display data -->
                 <div id="item">
                     <p>Subject:{{product.Subject}}</p>
                     <p>Location:{{product.Location}}</p>
                     <p>Price:{{product.price}}</p>
                     <p>Number_of_Places:{{product.Number_of_Places }} </p>
+                    <!-- Used to bind vue component to dom element -->
                     <button v-bind:disabled="product.Number_of_Places== 0" v-on:click="product.Number_of_Places -= 1 ">Add To Cart</button>
+                    <!-- Directive used to condintinally render a block -->
                     <p v-if="product.Number_of_Places == 0">
                     <p btnDisable:true></p> 
                     </p>
@@ -40,9 +46,14 @@
         
     </body>
     <script type="text/javascript">
-        var webstore = new Vue({
+        //Intantiate a vue instance
+        var webstore = new Vue({ 
+            //Mount the vuew intance to the element with the id app
            el:'#app',
+           //Private in memory datastore
+           // A function that returns the initial reactive state for the component instance
            data:{
+            //Variable used to display the sitename to the dom
                 sitename:"Pet Store",
                 btnDisable:false,
                 product:{
@@ -50,7 +61,6 @@
                     Location:'Knowledge Park',
                     price:2000,
                     Number_of_Places:5,
-                    
                 }
                
            }
